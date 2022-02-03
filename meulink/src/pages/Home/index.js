@@ -1,8 +1,17 @@
+import { useState } from 'react'
 import { FiLink } from 'react-icons/fi';
-import './home.css'
+import './home.css';
 
 import Menu from '../../components/Menu'
+import LinkItem from '../../components/LinkItem';
+
 export default function Home() {
+    const [link, setLink] = useState('');
+    const [showModal, setShowModal] = useState(false);
+
+    function handleShortLink() {
+        setShowModal(true);
+    }
     return (
         <div className="container-home">
 
@@ -18,15 +27,21 @@ export default function Home() {
                     <FiLink size={50} color="#68074b" />
                     <input
                         placeholder="Put your link here..."
+                        value={link}
+                        onChange={(event) => setLink(event.target.value)}
                     />
 
                 </div>
-                <button>Link Fast</button>
+                <button onClick={handleShortLink}>Link Fast</button>
 
             </div>
             <Menu />
-        </div>
+            {showModal && (
+                <LinkItem
+                    closeModal={() => setShowModal(false)} />
+            )}
 
+        </div>
 
     )
 }
