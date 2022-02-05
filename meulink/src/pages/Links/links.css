@@ -65,3 +65,11 @@
     display: none;
   }
 }
+.empty-list {
+  width: 100%;
+  color: #68074b;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-top: 28px;
+}
